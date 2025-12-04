@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernanda Lorca | Portafolio de Ingeniería</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* PALETA */
+            --bg-body:    #151221;
+            --bg-center:  #201c33;
+            --bg-card:    #1e1b2e;
+            --bg-footer:  #0d0b16;
+
+            /* TEXTOS */
+            --text-main:  #ffffff;
+            --text-muted: #b4b0c8;
+
+            /* COLORES CARDS */
+            --bio-color:   #34d399; 
+            --web-color:   #f472b6; 
+            --iot-color:   #fbbf24; 
+            --legal-color: #22d3ee; 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        
+        body { 
+            background-color: var(--bg-body); 
+            color: var(--text-main); 
+            line-height: 1.7; 
+            overflow-x: hidden; 
+        }
+        
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        p { font-weight: 300; opacity: 0.9; font-size: 1.05rem; }
+        
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-align: left; 
+            padding: 4rem 10%;
+            position: relative;
+            gap: 4rem;
+            background: radial-gradient(circle at 60% 40%, var(--bg-center) 0%, var(--bg-body) 70%);
+        }
+
+        .hero::before, .hero::after {
+            content: ''; position: absolute; width: 60%; height: 60%; 
+            filter: blur(150px); opacity: 0.08; z-index: -1;
+        }
+        .hero::before { top: -20%; left: -20%; background: var(--back-color); }
+        .hero::after { bottom: -20%; right: -20%; background: var(--web-color); }
+
+        .profile-img-container {
+            width: 320px; 
+            height: 320px;
+            position: relative;
+            flex-shrink: 0;
+            border-radius: 50%;
+            padding: 5px; 
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%; 
+            border-radius: 50%;
+            border: 4px solid var(--bg-body);
+            transition: transform 0.4s ease;
+        }
+
+        .profile-img-container:hover .profile-img { transform: scale(1.02); }
+
+        .hero-text { max-width: 600px; }
+
+        .hero h1 { 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem; 
+            font-weight: 700; 
+            letter-spacing: -0.5px; 
+            margin-bottom: 0.8rem;
+            color: var(--text-main); 
+            line-height: 1.2;
+        }
+        
+        .hero h2 { 
+            font-size: 1.3rem; 
+            color: var(--text-muted); 
+            font-weight: 500; 
+            margin-bottom: 2rem; 
+            letter-spacing: 0.5px; 
+        }
+        
+        .hero p { color: var(--text-muted); margin-bottom: 2.5rem; }
+        
+        .btn {
+            padding: 0.9rem 2.2rem; border-radius: 50px; font-weight: 600; border: none; cursor: pointer;
+            display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; font-size: 0.95rem;
+        }
+        .btn-primary { background: var(--text-main); color: var(--bg-body); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,255,255,0.15); }
+        
+        .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: var(--text-main); margin-left: 1rem; }
+        .btn-outline:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
+
+        section { padding: 6rem 10%; }
+        .section-title { font-size: 2.2rem; margin-bottom: 3.5rem; position: relative; display: inline-block; font-weight: 700; font-family: 'Montserrat', sans-serif; }
+        .section-title::after {
+            content: ''; display: block; width: 50px; height: 3px; 
+            background: linear-gradient(90deg, var(--bio-color), var(--web-color)); 
+            margin-top: 0.5rem; border-radius: 4px;
+        }
+
+        .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 5rem; align-items: start; }
+        .skill-tag {
+            display: inline-block; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.9rem; margin: 0 0.5rem 0.5rem 0;
+            color: var(--text-main); font-weight: 500;
+        }
+        .skill-tag:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 12px; padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: all 0.3s ease;
+            display: flex; flex-direction: column; position: relative; overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            text-decoration: none !important; color: inherit;
+        }
+
+        .card.bio { border-top: 3px solid var(--bio-color); }
+        .card.web { border-top: 3px solid var(--web-color); }
+        .card.back { border-top: 3px solid var(--back-color); }
+        .card.iot { border-top: 3px solid var(--iot-color); }
+        .card.legal { border-top: 3px solid var(--legal-color); }
+
+        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.3); background: #231f36; }
+
+        .card-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 1.2rem; }
+        .folder-icon { font-size: 2rem; opacity: 0.9; }
+        
+        .card.bio .folder-icon { color: var(--bio-color); }
+        .card.web .folder-icon { color: var(--web-color); }
+        .card.back .folder-icon { color: var(--back-color); }
+        .card.iot .folder-icon { color: var(--iot-color); }
+        .card.legal .folder-icon { color: var(--legal-color); }
+
+        .github-icon-indicator { font-size: 1.4rem; color: var(--text-muted); opacity: 0.5; transition: 0.3s; }
+        .card:hover .github-icon-indicator { opacity: 1; color: var(--text-main); }
+
+        .card h3 { font-size: 1.3rem; margin-bottom: 0.8rem; color: var(--text-main); font-weight: 600; font-family: 'Montserrat', sans-serif; }
+        .card p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
+
+        .tech-stack { display: flex; gap: 0.8rem; font-size: 0.8rem; font-family: monospace; opacity: 0.8; font-weight: 500; }
+        .card.bio .tech-stack { color: var(--bio-color); }
+        .card.web .tech-stack { color: var(--web-color); }
+        .card.back .tech-stack { color: var(--back-color); }
+        .card.iot .tech-stack { color: var(--iot-color); }
+        .card.legal .tech-stack { color: var(--legal-color); }
+
+        .badge {
+            position: absolute; top: 1rem; right: 3rem;
+            padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;
+            background: rgba(255,255,255,0.08); color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .github-cta {
+            margin-top: 6rem; padding: 4rem 2rem; text-align: center;
+            background: linear-gradient(145deg, var(--bg-card), var(--bg-body));
+            border: 1px solid rgba(255,255,255,0.03); border-radius: 16px;
+        }
+
+        .footer { 
+            text-align: center; padding: 4rem 2rem; margin-top: 0; border-top: 1px solid rgba(255,255,255,0.03); 
+            color: var(--text-muted); background: var(--bg-footer);
+        }
+        .socials a { font-size: 1.6rem; margin: 0 1rem; color: var(--text-muted); transition: 0.3s; }
+        .socials a:hover { color: var(--text-main); transform: translateY(-3px); }
+
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 3rem 1.5rem;
+                gap: 2.5rem;
+            }
+            .profile-img-container { width: 200px; height: 200px; }
+            .hero h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            section { padding: 4rem 5%; }
+            .badge { right: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        
+        <div class="profile-img-container">
+            <img src="perfil.jpg" alt="Fernanda Lorca" class="profile-img">
+        </div>
+
+        <div class="hero-text">
+            <h1>Fernanda Lorca Badilla</h1>
+            <h2>Ingeniera Civil en Informática y Telecomunicaciones</h2>
+            
+            <p>
+                Impulsada por la curiosidad y la innovación constante. Transformo problemas complejos en soluciones tecnológicas reales.
+            </p>
+            
+            <div>
+                <a href="#projects" class="btn btn-primary">Ver Portafolio</a>
+                <a href="https://www.linkedin.com/in/fernanda-lorca-badilla/" target="_blank" class="btn btn-outline"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="about">
+        <div class="about-grid">
+            <div>
+                <h2 class="section-title">Sobre Mí</h2>
+                
+                <p>
+                    Ingeniera civil con capacidad para ejecutar el ciclo completo de desarrollo de software. A través de proyectos académicos y de investigación, he construido soluciones de punta a punta en áreas como la biología sintética y la logística comercial, integrando ingeniería de software y ciencia de datos.
+                </p>
+                <br>
+                <p>
+                    Me identifico como una eterna aprendiz de las nuevas tecnologías. Me motiva explorar herramientas emergentes, arquitecturas modernas y metodologías ágiles para construir sistemas que no solo funcionen, sino que marquen la diferencia.
+                </p>
+            </div>
+            <div>
+                <h3>Stack Tecnológico</h3>
+                <div class="skills-container">
+                    <span class="skill-tag">Python (Flask/Django)</span>
+                    <span class="skill-tag">Node.js & React (MERN)</span>
+                    <span class="skill-tag">Deep Learning (PyTorch)</span>
+                    <span class="skill-tag">Docker & Kubernetes</span>
+                    <span class="skill-tag">PostgreSQL & MongoDB</span>
+                    <span class="skill-tag">AWS / Cloud & IoT</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <div class="projects-grid">
+
+            <a href="https://github.com/cvtalrc/GC-AI" target="_blank" class="card bio">
+                <span class="badge">Tesis Magíster</span>
+                <div class="card-header">
+                    <i class="fa-solid fa-dna folder-icon"></i>
+                    <i class="fab fa-github github-icon-indicator"></i>
+                </div>
+                <h3>GC-AI: Bio-Symbol Detection</h3>
+                <p>Plataforma web Fullstack impulsada por Deep Learning para la detección automática de símbolos genéticos. Backend en Python y despliegue contenerizado.</p>
+                <div class="tech-stack">
+                    <span>PyTorch</span>
+                    <span>Flask</span>
+                    <span>Docker</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/frnvnd4/SimBOL/" target="_blank" class="card bio">
+                <span class="badge">Investigación</span>
+                <div class="card-header">
+                    <i class="fa-solid fa-microchip folder-icon"></i>
+                    <i class="fab fa-github github-icon-indicator"></i>
+                </div>
+                <h3>SimBOL: Simulation Pipeline</h3>
+                <p>Automatización de flujos científicos. Convierte diseños de circuitos biológicos (SBOL3) en formatos de simulación listos para ejecución.</p>
+                <div class="tech-stack">
+                    <span>Python</span>
+                    <span>Jupyter</span>
+                    <span>Data Eng</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/cvtalrc/e-commerce-mundo-tenis" target="_blank" class="card web">
+                <div class="card-header">
+                    <i class="fa-solid fa-cart-shopping folder-icon"></i>
+                    <i class="fab fa-github github-icon-indicator"></i>
+                </div>
+                <h3>Mundo Tenis E-commerce</h3>
+                <p>Plataforma B2C completa. Integra pasarela de pagos WebPay real, gestión de inventario MongoDB y arquitectura MVC escalable.</p>
+                <div class="tech-stack">
+                    <span>Node.js</span>
+                    <span>MongoDB</span>
+                    <span>WebPay</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/frnvnd4/SWSM-Project/" target="_blank" class="card iot">
+                <div class="card-header">
+                    <i class="fa-solid fa-helmet-safety folder-icon"></i>
+                    <i class="fab fa-github github-icon-indicator"></i>
+                </div>
+                <h3>Safe Worker IoT</h3>
+                <p>Sistema de seguridad industrial. Arquitectura híbrida (Edge/Cloud) con Arduino y AWS para monitoreo ambiental en tiempo real.</p>
+                <div class="tech-stack">
+                    <span>Arduino</span>
+                    <span>AWS</span>
+                    <span>PostgreSQL</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/frnvnd4/LegalTech" target="_blank" class="card legal">
+                <div class="card-header">
+                    <i class="fa-solid fa-scale-balanced folder-icon"></i>
+                    <i class="fab fa-github github-icon-indicator"></i>
+                </div>
+                <h3>LegalTech ConsultorIA</h3>
+                <p>Asistente legal con IA y NLP para democratizar el acceso a la justicia. Sistema de tickets y gestión de casos automatizada.</p>
+                <div class="tech-stack">
+                    <span>Python</span>
+                    <span>NLP</span>
+                    <span>Fullstack</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="github-cta">
+            <h3 style="color: var(--text-main); font-size: 2rem; margin-bottom: 1rem;">Más código y detalles técnicos</h3>
+            <p style="margin-bottom: 2.5rem; color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                En mi perfil de GitHub se encuentra el código fuente completo, diagramas de arquitectura detallados y la documentación técnica de estos proyectos, además de otros repositorios, contribuciones y experimentos técnicos.
+            </p>
+            <a href="https://github.com/frnvnd4" target="_blank" class="btn btn-outline" style="border-color: var(--text-muted); color: var(--text-main); padding: 0.8rem 2.5rem;">
+                <i class="fab fa-github"></i> Explorar GitHub Completo
+            </a>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <div class="socials">
+            <a href="mailto:fernanda.lorcab@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/fernanda-lorca-badilla/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/frnvnd4" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        <p style="margin-top: 2.5rem; font-size: 0.85rem; opacity: 0.6;">© 2025 Fernanda Lorca Badilla. Ingeniería y Ciencia de Datos.</p>
+    </footer>
+
+</body>
+</html>
