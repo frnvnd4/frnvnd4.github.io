@@ -27,7 +27,8 @@
             --bio-color:   #34d399; 
             --web-color:   #f472b6; 
             --iot-color:   #fbbf24; 
-            --legal-color: #22d3ee; 
+            --legal-color: #22d3ee;
+            --back-color:  #8b5cf6;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
         
@@ -152,7 +153,8 @@
 
         .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.3); background: #231f36; }
 
-        .card-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 1.2rem; }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .card-header-right { display: flex; align-items: center; gap: 1rem; }
         .folder-icon { font-size: 2rem; opacity: 0.9; }
         
         .card.bio .folder-icon { color: var(--bio-color); }
@@ -175,10 +177,18 @@
         .card.legal .tech-stack { color: var(--legal-color); }
 
         .badge {
-            position: absolute; top: 1rem; right: 3rem;
-            padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;
-            background: rgba(255,255,255,0.08); color: var(--text-main);
+            position: static; 
+            display: inline-block;
+            padding: 0.3rem 0.8rem; 
+            border-radius: 6px; 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            font-weight: 700;
+            background: rgba(255,255,255,0.08); 
+            color: var(--text-main);
             border: 1px solid rgba(255,255,255,0.1);
+            white-space: nowrap;
         }
 
         .github-cta {
@@ -194,18 +204,9 @@
         .socials a { font-size: 1.6rem; margin: 0 1rem; color: var(--text-muted); transition: 0.3s; }
         .socials a:hover { color: var(--text-main); transform: translateY(-3px); }
 
-        @media (max-width: 968px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 3rem 1.5rem;
-                gap: 2.5rem;
-            }
-            .profile-img-container { width: 200px; height: 200px; }
-            .hero h1 { font-size: 2.5rem; }
-            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-            section { padding: 4rem 5%; }
-            .badge { right: 1.5rem; }
+        @media (max-width: 480px) {
+            .card-header-right { gap: 0.5rem; }
+            .badge { font-size: 0.6rem; padding: 0.2rem 0.5rem; }
         }
     </style>
 </head>
@@ -265,10 +266,13 @@
         <div class="projects-grid">
 
             <a href="https://github.com/cvtalrc/GC-AI" target="_blank" class="card bio">
-                <span class="badge">Tesis Magíster</span>
                 <div class="card-header">
                     <i class="fa-solid fa-dna folder-icon"></i>
-                    <i class="fab fa-github github-icon-indicator"></i>
+                    
+                    <div class="card-header-right">
+                        <span class="badge">Tesis Magíster</span>
+                        <i class="fab fa-github github-icon-indicator"></i>
+                    </div>
                 </div>
                 <h3>GC-AI: Bio-Symbol Detection</h3>
                 <p>Plataforma web Fullstack impulsada por Deep Learning para la detección automática de símbolos genéticos. Backend en Python y despliegue contenerizado.</p>
@@ -280,10 +284,13 @@
             </a>
 
             <a href="https://github.com/frnvnd4/SimBOL/" target="_blank" class="card bio">
-                <span class="badge">Investigación</span>
                 <div class="card-header">
                     <i class="fa-solid fa-microchip folder-icon"></i>
-                    <i class="fab fa-github github-icon-indicator"></i>
+                    
+                    <div class="card-header-right">
+                        <span class="badge">Investigación</span>
+                        <i class="fab fa-github github-icon-indicator"></i>
+                    </div>
                 </div>
                 <h3>SimBOL: Simulation Pipeline</h3>
                 <p>Automatización de flujos científicos. Convierte diseños de circuitos biológicos (SBOL3) en formatos de simulación listos para ejecución.</p>
