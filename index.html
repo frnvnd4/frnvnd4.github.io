@@ -208,9 +208,42 @@
         .socials a { font-size: 1.6rem; margin: 0 1rem; color: var(--text-muted); transition: 0.3s; }
         .socials a:hover { color: var(--text-main); transform: translateY(-3px); }
 
-        @media (max-width: 480px) {
+        /* Tablet */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 3rem 6%;
+                gap: 2rem;
+                min-height: auto;
+            }
+            .hero-text { max-width: 100%; }
+            .profile-img-container { width: 220px; height: 220px; }
+            .hero h1 { font-size: 2.4rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            section { padding: 4rem 6%; }
+            .projects-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        }
+
+        /* Mobile */
+        @media (max-width: 580px) {
+            .hero { padding: 2.5rem 5%; gap: 1.5rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero h2 { font-size: 1.05rem; margin-bottom: 1.2rem; }
+            .hero p { font-size: 0.95rem; margin-bottom: 1.5rem; }
+            .profile-img-container { width: 180px; height: 180px; }
+            .btn { padding: 0.75rem 1.6rem; font-size: 0.85rem; }
+            .btn-outline { margin-left: 0.5rem; }
+            section { padding: 3rem 5%; }
+            .section-title { font-size: 1.6rem; margin-bottom: 2rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .card { padding: 1.5rem; }
             .card-header-right { gap: 0.5rem; }
             .badge { font-size: 0.6rem; padding: 0.2rem 0.5rem; }
+            .github-cta { padding: 2.5rem 1.5rem; margin-top: 3rem; }
+            .github-cta h3 { font-size: 1.4rem !important; }
+            .github-cta p { font-size: 0.95rem !important; }
+            .footer { padding: 2.5rem 1.5rem; }
         }
     </style>
 </head>
