@@ -29,6 +29,7 @@
             --iot-color:   #fbbf24; 
             --legal-color: #22d3ee;
             --back-color:  #8b5cf6;
+            --ai-color:    #60a5fa;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
         
@@ -150,6 +151,7 @@
         .card.back { border-top: 3px solid var(--back-color); }
         .card.iot { border-top: 3px solid var(--iot-color); }
         .card.legal { border-top: 3px solid var(--legal-color); }
+        .card.ai { border-top: 3px solid var(--ai-color); }
 
         .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.3); background: #231f36; }
 
@@ -162,6 +164,7 @@
         .card.back .folder-icon { color: var(--back-color); }
         .card.iot .folder-icon { color: var(--iot-color); }
         .card.legal .folder-icon { color: var(--legal-color); }
+        .card.ai .folder-icon { color: var(--ai-color); }
 
         .github-icon-indicator { font-size: 1.4rem; color: var(--text-muted); opacity: 0.5; transition: 0.3s; }
         .card:hover .github-icon-indicator { opacity: 1; color: var(--text-main); }
@@ -175,6 +178,7 @@
         .card.back .tech-stack { color: var(--back-color); }
         .card.iot .tech-stack { color: var(--iot-color); }
         .card.legal .tech-stack { color: var(--legal-color); }
+        .card.ai .tech-stack { color: var(--ai-color); }
 
         .badge {
             position: static; 
@@ -223,7 +227,7 @@
             <h2>Ingeniera Civil en Informática y Telecomunicaciones</h2>
             
             <p>
-                Magíster en Ciencias de la Ingeniería. Impulsada por la curiosidad y la innovación constante. Transformo problemas complejos en soluciones tecnológicas reales.
+                Magíster en Ciencias de la Ingeniería. Me gusta entender problemas difíciles y construir soluciones con IA que realmente funcionen, desde el modelo hasta el deploy.
             </p>
             
             <div>
@@ -240,22 +244,24 @@
                 <h2 class="section-title">Sobre Mí</h2>
                 
                 <p>
-                    Ingeniera civil con capacidad para ejecutar el ciclo completo de desarrollo de software. A través de proyectos académicos y de investigación, he construido soluciones de punta a punta en áreas como la biología sintética y la logística comercial, integrando ingeniería de software y ciencia de datos.
+                    Ingeniera civil con experiencia construyendo productos de punta a punta: desde pipelines de IA con múltiples modelos y sistemas RAG en producción, hasta interfaces completas en React. He trabajado en dominios distintos &mdash; bioinformática, legal-tech, logística &mdash; y en todos el hilo común ha sido aplicar inteligencia artificial para resolver problemas reales.
                 </p>
                 <br>
                 <p>
-                    Me identifico como una eterna aprendiz de las nuevas tecnologías. Me motiva explorar herramientas emergentes, arquitecturas modernas y metodologías ágiles para construir sistemas que no solo funcionen, sino que marquen la diferencia.
+                    Disfruto el proceso completo: entender el problema, diseñar la arquitectura, escribir el código, desplegarlo y ver que funcione. Siempre estoy aprendiendo algo nuevo, y eso es lo que más me gusta de esto.
                 </p>
             </div>
             <div>
                 <h3>Stack Tecnológico</h3>
                 <div class="skills-container">
-                    <span class="skill-tag">Python (Flask/Django)</span>
-                    <span class="skill-tag">Node.js & React (MERN)</span>
-                    <span class="skill-tag">Deep Learning (PyTorch)</span>
-                    <span class="skill-tag">Docker & Kubernetes</span>
-                    <span class="skill-tag">PostgreSQL & MongoDB</span>
-                    <span class="skill-tag">AWS / Cloud & IoT</span>
+                    <span class="skill-tag">Python (FastAPI / Flask)</span>
+                    <span class="skill-tag">React 19 & Vite</span>
+                    <span class="skill-tag">LLMs (Claude, Gemini)</span>
+                    <span class="skill-tag">RAG & pgvector</span>
+                    <span class="skill-tag">GCP & Vertex AI</span>
+                    <span class="skill-tag">Docker & CI/CD</span>
+                    <span class="skill-tag">PostgreSQL & Redis</span>
+                    <span class="skill-tag">PyTorch & TensorFlow</span>
                 </div>
             </div>
         </div>
@@ -264,6 +270,23 @@
     <section id="projects">
         <h2 class="section-title">Proyectos Destacados</h2>
         <div class="projects-grid">
+
+            <div class="card ai">
+                <div class="card-header">
+                    <i class="fa-solid fa-brain folder-icon"></i>
+                    <div class="card-header-right">
+                        <span class="badge">Profesional</span>
+                    </div>
+                </div>
+                <h3>Plomolex: SaaS Legal-Tech con IA</h3>
+                <p>Plataforma que automatiza estudios de títulos inmobiliarios. Construí el sistema RAG (5 corpus, +13.000 chunks con pgvector), el pipeline multi-modelo para extracción de documentos, la infraestructura en GCP y gran parte del frontend en React 19.</p>
+                <div class="tech-stack">
+                    <span>FastAPI</span>
+                    <span>React</span>
+                    <span>RAG</span>
+                    <span>GCP</span>
+                </div>
+            </div>
 
             <a href="https://github.com/cvtalrc/GC-AI" target="_blank" class="card bio">
                 <div class="card-header">
@@ -377,7 +400,7 @@
             <a href="https://www.linkedin.com/in/fernanda-lorca-badilla/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             <a href="https://github.com/frnvnd4" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
         </div>
-        <p style="margin-top: 2.5rem; font-size: 0.85rem; opacity: 0.6;">© 2025 Fernanda Lorca Badilla.</p>
+        <p style="margin-top: 2.5rem; font-size: 0.85rem; opacity: 0.6;">© 2026 Fernanda Lorca Badilla.</p>
     </footer>
 
 </body>
